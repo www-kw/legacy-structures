@@ -1,8 +1,8 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const modelLinks = [
@@ -54,7 +54,7 @@ export default function Header() {
           align-items: center;
           justify-content: space-between;
           gap: 24px;
-          padding-left: 130px;
+          padding: 0 clamp(24px, 9vw, 130px);
         }
         .header-cta-group {
           display: flex;
@@ -62,7 +62,12 @@ export default function Header() {
           align-items: center;
           gap: 0;
           min-width: 280px;
-          padding-right: 140px;
+        }
+        .header-logo {
+          display: block;
+          width: 170px;
+          max-width: 34vw;
+          height: auto;
         }
         .header-quote-btn {
           display: block;
@@ -158,6 +163,7 @@ export default function Header() {
         @media (max-width: 768px) {
           .header-top { padding: 18px 12px; }
           .header-top-inner { flex-direction: row; gap: 8px; flex-wrap: wrap; justify-content: center; }
+          .header-logo { width: 150px; max-width: 70vw; }
           .header-cta-group { min-width: 0; width: 100%; }
           .header-quote-btn { width: auto; height: auto; font-size: 22px; padding: 8px 16px; }
           .header-phone { font-size: 23px; }
@@ -176,13 +182,10 @@ export default function Header() {
         <div className="header-top">
           <div className="header-top-inner">
             <Link href="/">
-              <Image
+              <img
                 src="https://legacystructuresusa.com/wp-content/uploads/2025/07/LEGECY-STRUCTURES-dark-blue-1.png"
                 alt="Legacy Structures"
-                width={170}
-                height={90}
-                style={{ maxHeight: "132px", width: "auto", height: "auto" }}
-                priority
+                className="header-logo"
               />
             </Link>
             <div className="header-cta-group">
